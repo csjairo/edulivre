@@ -12,3 +12,4 @@ class Teacher(Base):
     specialties = Column(Text)
 
     user = relationship("User", back_populates="teacher")
+    workshops = relationship("Workshop", back_populates="teacher")
