@@ -4,7 +4,7 @@ from schemas.teacher import TeacherCreate
 from uuid import UUID
 
 def create_teacher(db: Session, teacher_data: TeacherCreate) -> Teacher:
-    new_teacher = Teacher(**teacher_data.model_dump())
+    new_teacher = Teacher(uuid=teacher_data.uuid, **teacher_data.model_dump(exclude={"uuid"}))
     db.add(new_teacher)
     db.commit()
     db.refresh(new_teacher)
@@ -13,5 +13,5 @@ def create_teacher(db: Session, teacher_data: TeacherCreate) -> Teacher:
 def get_teachers(db: Session):
     return db.query(Teacher).all()
 
-def get_teacher_by_id(db: Session, teacher_id: int) -> Teacher | None:
-    return db.query(Teacher).filter(Teacher.id == teacher_id).first()
+def get_teacher_by_id(db: Session, teacher_uuid: UUID) -> Teacher | None:
+    return db.query(Teacher).filter(Teacher.uuid == teacher_uuid).first()

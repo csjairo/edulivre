@@ -6,11 +6,10 @@ class TeacherBase(BaseModel):
     specialties: str
 
 class TeacherCreate(TeacherBase):
-    user_uuid: UUID
+    uuid: UUID
 
 class TeacherRead(TeacherBase):
-    id: int
-    user_uuid: UUID
+    uuid: UUID
 
     class Config:
         orm_mode = True
