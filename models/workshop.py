@@ -19,3 +19,4 @@ class Workshop(Base):
     teacher_uuid = Column(UUID(as_uuid=True), ForeignKey("teacher.uuid"), nullable=False)
 
     teacher = relationship("Teacher", back_populates="workshops")
+    students = relationship("Participate", back_populates="workshop")

@@ -22,3 +22,4 @@ class Student(Base):
     interests = Column(Text)
 
     user = relationship("User", back_populates="student")
+    workshops = relationship("Participate", back_populates="student")
