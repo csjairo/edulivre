@@ -15,3 +15,4 @@ class User(Base):
     password = Column(String(255), nullable=False)
 
     teacher = relationship("Teacher", back_populates="user", uselist=False)
+    student = relationship("Student", back_populates="user", uselist=False)
