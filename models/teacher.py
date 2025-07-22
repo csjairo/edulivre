@@ -13,3 +13,4 @@ class Teacher(Base):
 
     user = relationship("User", back_populates="teacher")
     workshops = relationship("Workshop", back_populates="teacher")
+    lessons = relationship("Lesson", back_populates="teacher")

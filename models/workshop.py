@@ -20,3 +20,4 @@ class Workshop(Base):
 
     teacher = relationship("Teacher", back_populates="workshops")
     students = relationship("Participate", back_populates="workshop")
+    lessons = relationship("Lesson", back_populates="workshop")
