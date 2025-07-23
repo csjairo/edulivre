@@ -7,4 +7,4 @@ psycopg2-binary
 fastapi-pagination
 passlib[bcrypt]
 python-jose[cryptography]
-pip install pydantic[email]
+pydantic[email]
