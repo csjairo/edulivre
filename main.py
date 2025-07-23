@@ -1,11 +1,30 @@
+# main.py
 from fastapi import FastAPI
 from database import Base, engine
-from routers import participate_router, user_router
-from routers import student_router, workshop_router
-from routers import frequency_router, history_router
-from routers import teacher_router, lesson_router
+from routers import (
+    participate_router, user_router,
+    student_router, workshop_router,
+    frequency_router, history_router,
+    teacher_router, lesson_router
+)
+
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="EduLivre API")
+
+origins = [
+    "http://localhost:5173",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 Base.metadata.create_all(bind=engine)
 
