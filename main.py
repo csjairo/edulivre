@@ -12,7 +12,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="EduLivre API")
 
-origins = []
+origins = [
+    "http://localhost:5173",
+    "http://localhost:8080",
+]
 
 app.add_middleware(
     CORSMiddleware,

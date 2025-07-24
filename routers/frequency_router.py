@@ -4,8 +4,8 @@ from database import SessionLocal
 from schemas.frequency import FrequencyCreate, FrequencyRead
 from services.frequency_service import (
     create_frequency,
-    get_frequency_by_student,
-    get_frequency_by_lesson,
+    get_frequency_by_student_id,
+    get_frequency_by_lesson_id
 )
 from uuid import UUID
 
@@ -24,8 +24,8 @@ def create(frequency: FrequencyCreate, db: Session = Depends(get_db)):
 
 @router.get("/student/{student_uuid}", response_model=list[FrequencyRead])
 def list_by_student(student_uuid: UUID, db: Session = Depends(get_db)):
-    return get_frequency_by_student(db, student_uuid)
+    return get_frequency_by_student_id(db, student_uuid)
 
 @router.get("/lesson/{lesson_uuid}", response_model=list[FrequencyRead])
 def list_by_lesson(lesson_uuid: UUID, db: Session = Depends(get_db)):
-    return get_frequency_by_lesson(db, lesson_uuid)
+    return get_frequency_by_lesson_id(db, lesson_uuid)

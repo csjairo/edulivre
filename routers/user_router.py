@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from database import SessionLocal
-from schemas.user import UserCreate, UserRead
-from services.user_service import create_user, get_users, get_user_by_id
+from schemas.user import UserCreate, UserRead, UserUpdate
+from services.user_service import create_user, get_users, get_user_by_id, update_user
 from uuid import UUID
 
 router = APIRouter(prefix="/users", tags=["users"])
@@ -28,3 +28,10 @@ def get_user(user_id: UUID, db: Session = Depends(get_db)):
     if user is None:
         raise HTTPException(status_code=404, detail="User not found")
     return user
+
+@router.put("/{user_id}", response_model=UserRead)
+def update_user_endpoint(user_id: UUID, user_data: UserUpdate, db: Session = Depends(get_db)):
+    updated_user = update_user(db, user_id, user_data)
+    if updated_user is None:
+        raise HTTPException(status_code=404, detail="User not found")
+    return updated_user

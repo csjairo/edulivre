@@ -8,3 +8,4 @@ fastapi-pagination
 passlib[bcrypt]
 python-jose[cryptography]
 pydantic[email]
+passlib
