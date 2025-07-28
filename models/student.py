@@ -19,6 +19,7 @@ class Student(Base):
         SAEnum(GradeLevel, name="grade_type", create_type=False, values_callable=lambda obj: [e.value for e in obj]),
         nullable=False
     )
+
     interests = Column(Text)
 
     user = relationship("User", back_populates="student")

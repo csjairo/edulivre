@@ -10,7 +10,7 @@ class HistoryBase(BaseModel):
 class HistoryCreate(HistoryBase):
     pass
 
-class HistoryUpdate(BaseModel): # Nova classe para atualização
+class HistoryUpdate(BaseModel):
     user_uuid: Optional[UUID] = None
     action: Optional[str] = None
 
